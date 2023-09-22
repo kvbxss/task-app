@@ -41,10 +41,7 @@ export class TasksController {
   }
 
   @Put(":id")
-  updateTask(
-    @Param("id") id: string,
-    @Body() input: { done: boolean },
-  ): Task | null {
+  updateTask(@Param("id") id: string, @Body() input: { done: boolean }): Task {
     if (!/^\d+$/.test(id)) {
       throw new HttpException("Id must be a number", HttpStatus.BAD_REQUEST);
     }

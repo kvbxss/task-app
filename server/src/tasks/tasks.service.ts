@@ -11,7 +11,7 @@ export class TasksService {
 
   createTask(content: string): Task {
     const task: Task = {
-      id: Date.now(),
+      id: this.tasks.length + 1,
       content,
       done: false,
     };

@@ -19,8 +19,8 @@ export class TasksService {
     return task;
   }
 
-  updateTask(id, done: boolean): Task {
-    const task = this.tasks.find((task) => task.id === id);
+  updateTask(id: string, done: boolean): Task {
+    const task = this.tasks.find((task) => task.id === parseInt(id));
 
     if (!task) {
       return null;
@@ -30,7 +30,13 @@ export class TasksService {
     return task;
   }
 
-  deleteTask(id): void {
-    this.tasks = this.tasks.filter((task) => task.id !== id);
+  deleteTask(id: string): Task[] {
+    const index = this.tasks.findIndex((task) => task.id === parseInt(id));
+
+    if (index !== -1) {
+      this.tasks.splice(index, 1);
+    }
+
+    return this.tasks;
   }
 }

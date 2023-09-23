@@ -14,7 +14,12 @@ const TaskForm: FunctionComponent<TaskFormProps> = ({
   return (
     <Form onSubmit={addTask}>
       <Title>Tasks Organizer</Title>
-      <Text type="text" value={newContent} onChange={handleContentChange} />
+      <Text
+        type="text"
+        placeholder="Add a new task..."
+        value={newContent}
+        onChange={handleContentChange}
+      />
       <div>
         <Add type="submit">Add</Add>
       </div>

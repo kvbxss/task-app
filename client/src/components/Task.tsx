@@ -61,6 +61,8 @@ const Task: FunctionComponent<TaskProps> = ({
         <Label>
           <Checkbox
             type="checkbox"
+            role="checkbox"
+            name="checkbox"
             checked={done}
             onChange={handleCheckboxChange}
           />

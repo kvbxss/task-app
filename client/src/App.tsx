@@ -87,13 +87,24 @@ function App() {
 export default App;
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   font-family: "Lucida Console", "Courier New", monospace;
-  margin: 1em;
-  padding: 0.25em 1em;
+  margin: 0 auto;
 `;
 
 const List = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  align-items: center;
+  justify-items: center;
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;

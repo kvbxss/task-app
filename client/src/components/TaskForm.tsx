@@ -1,11 +1,7 @@
-import React, { ChangeEvent, HTMLProps, FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components";
+import { TaskFormProps } from "../interfaces";
 
-interface TaskFormProps extends HTMLProps<HTMLDivElement> {
-  newContent: string;
-  handleContentChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  addTask: () => void;
-}
 const TaskForm: FunctionComponent<TaskFormProps> = ({
   newContent,
   handleContentChange,

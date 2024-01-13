@@ -1,16 +1,7 @@
 import React, { FunctionComponent, useState } from "react";
 import taskService from "../service/Api";
 import styled from "styled-components";
-
-interface TaskProps {
-  task: {
-    id: number;
-    content: string;
-    done: boolean;
-  };
-  handleDelete: (id: number) => void;
-  handleUpdate: (id: number, done: boolean) => void;
-}
+import { TaskProps } from "../interfaces";
 
 const Task: FunctionComponent<TaskProps> = ({
   task,

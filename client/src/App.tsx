@@ -3,6 +3,14 @@ import TaskForm from "./components/TaskForm";
 import Task from "./components/Task";
 import taskService from "./service/Api";
 import styled from "styled-components";
+import Register from "./components/RegisterForm";
+import Login from "./components/LoginForm";
+import {
+  Navigate,
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
 
 interface TaskObject {
   id: number;
@@ -63,8 +71,20 @@ function App() {
     });
   }, []);
 
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route>
+        <Route path="/" element={<Navigate replace to={"/login"} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Route>
+    )
+  );
+
   return (
     <Wrapper>
+      <Login />
+      <Register />
       <TaskForm
         newContent={newContent}
         handleContentChange={handleContentChange}

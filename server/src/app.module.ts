@@ -3,7 +3,7 @@ import { TasksController } from "./tasks/tasks.controller";
 import { TasksService } from "./tasks/tasks.service";
 import { JwtModule } from "@nestjs/jwt";
 import { AuthController } from "./jwt/auth.controller";
-import { JwtService } from "./jwt/auth.service";
+import { AuthService } from "./jwt/auth.service";
 
 @Module({
   imports: [
@@ -13,6 +13,6 @@ import { JwtService } from "./jwt/auth.service";
     }),
   ],
   controllers: [TasksController, AuthController],
-  providers: [TasksService, JwtService],
+  providers: [TasksService, AuthService],
 })
 export class AppModule {}

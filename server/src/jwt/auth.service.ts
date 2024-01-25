@@ -1,7 +1,7 @@
 // auth.service.ts
 import { Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { UsersService } from "../users/users.service"; // Assuming you have a UsersService
+import { UsersService } from "../users/users.service";
 
 @Injectable()
 export class AuthService {
@@ -30,21 +30,21 @@ export class AuthService {
     try {
       await this.usersService.createUser(user);
 
-      // Generate and return the JWT token for the registered user
+      
       const token = await this.generateToken({ username: user.username });
       return token;
     } catch (error) {
-      // Handle registration errors, e.g., if the username already exists
+      
       throw error;
     }
   }
 
-  // AuthService login method
+  
   async login(username: string, password: string): Promise<string | null> {
     const user = await this.usersService.validateUser(username, password);
 
     if (user) {
-      // Generate and return the JWT token for the authenticated user
+      
       const token = await this.generateToken({ username: user.username });
       return token;
     }

@@ -20,7 +20,7 @@ export class UsersService {
       );
     }
 
-    // Hash the user's password before saving it
+    
     const hashedPassword = await hash(payload.password, 10);
     await this.usersRepository.save({
       ...payload,

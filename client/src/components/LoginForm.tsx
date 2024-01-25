@@ -6,17 +6,22 @@ import { useNavigate } from "react-router-dom";
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (username: string, password: string) => {
     try {
       const response = await axios.post("http://localhost:4200/auth/login", {
         username,
         password,
       });
+
+      const authToken = response.data.token;
+
+      localStorage.setItem("authToken", authToken);
+
       console.log("Login Successful:", response.data);
-      // Store the token in the state or context for future requests
+
+      navigate("/tasks");
     } catch (error) {
       console.error("Login Failed:", error);
     }
@@ -41,7 +46,9 @@ const Login: React.FC = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <LoginButton onClick={handleLogin}>Login</LoginButton>
+      <LoginButton onClick={() => handleLogin(username, password)}>
+        Login
+      </LoginButton>
     </Wrapper>
   );
 };
@@ -61,6 +68,7 @@ const TitleWrapper = styled.div`
   justify-content: space-between;
   width: 300px;
 `;
+
 const Title = styled.h2`
   font-size: 1.5em;
   text-align: center;

@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 const Register: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
 
   const handleRegister = async () => {
@@ -15,7 +14,13 @@ const Register: React.FC = () => {
         username,
         password,
       });
-      console.log("Registration Successful:", response.data);
+
+      const data = response.data;
+      const authToken = response.data.token;
+      localStorage.setItem("authToken", authToken);
+
+      console.log("Registration Successful:", data);
+      navigate("/login");
     } catch (error) {
       console.error("Registration Failed:", error);
     }
@@ -60,6 +65,7 @@ const TitleWrapper = styled.div`
   justify-content: space-between;
   width: 300px;
 `;
+
 const Title = styled.h2`
   font-size: 1.5em;
   text-align: center;

@@ -6,6 +6,7 @@ import { AuthService } from "./jwt/auth.service";
 import { Module } from "@nestjs/common";
 import { AllExceptionsFilter } from "./error.filter";
 import { APP_FILTER } from "@nestjs/core";
+import { UsersModule } from "./users/users.module";
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { APP_FILTER } from "@nestjs/core";
       secret: "secret",
       signOptions: { expiresIn: "1h" },
     }),
+    UsersModule,
   ],
   controllers: [TasksController, AuthController],
   providers: [

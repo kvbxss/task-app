@@ -30,21 +30,17 @@ export class AuthService {
     try {
       await this.usersService.createUser(user);
 
-      
       const token = await this.generateToken({ username: user.username });
       return token;
     } catch (error) {
-      
       throw error;
     }
   }
 
-  
   async login(username: string, password: string): Promise<string | null> {
     const user = await this.usersService.validateUser(username, password);
 
     if (user) {
-      
       const token = await this.generateToken({ username: user.username });
       return token;
     }
